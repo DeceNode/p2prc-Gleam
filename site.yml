@@ -12,15 +12,19 @@
         go version
       register: command_output
       
-    - name: Setup Gleam
-      shell: |
-        git clone https://github.com/chrislusf/gleam.git
-        cd ./gleam/distributed/gleam
-        go build .
-      register: command_output
+    - name: Creates a copy of a new file 
+      ansible.builtin.copy:
+        src: ./gleam
+        dest: /home/gleam
+     
+    - name: Making Gleam a Executable 
+      shell: chmod +x ./gleam 
+      async: 2592000               # 60*60*24*30 – 1 month (This will keep the following command running for a month
+      poll: 0
 
     - name: Start Gleam Master Node
       shell: |
+        cd /home/gleam
         ./gleam master --address=":45326"
       register: command_output
 
