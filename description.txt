@@ -1,0 +1,4 @@
+Author: Alister Luiz / Akilan Selvacoumar 
+Email: alisterluiz@gmail.com / me@akilan.io 
+
+The following plugin allows a user to run Gleam in p2prc.
