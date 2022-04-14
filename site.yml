@@ -1,17 +1,6 @@
 - hosts: all
 
   tasks:
-    - name: Setup and Install Golang
-      shell: |
-        apt update
-        apt upgrade
-        wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz
-        tar -C /usr/local/ -xzf go1.13.5.linux-amd64.tar.gz
-        echo "export PATH=$PATH:/usr/local/go/bin" >> $HOME/.profile
-        source .profile
-        go version
-      register: command_output
-      
     - name: Creates a copy of a new file 
       ansible.builtin.copy:
         src: ./gleam
